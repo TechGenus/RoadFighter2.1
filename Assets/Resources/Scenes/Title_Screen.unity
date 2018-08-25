@@ -152,11 +152,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 739285580}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff4f51cc2b33d01458a6b6461a9b372d, type: 3}
+  m_Script: {fileID: 11500000, guid: ec70b767e795ef54182ee7f2d82e781f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scrollSpeed: 1
-  scrollDir: {x: 0, y: 0}
 --- !u!114 &739285583
 MonoBehaviour:
   m_ObjectHideFlags: 0
