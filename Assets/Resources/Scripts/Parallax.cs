@@ -30,7 +30,7 @@ public class Parallax : MonoBehaviour {
 		//if the image is past the middle
 		if (first&&Vector2.Dot(localPos,scrollDir)>=0) {
 			//the location of the newly instantiated image
-			Vector2 newPos = -(new Vector2(screenSize.x*scrollDir.x, screenSize.y*scrollDir.y));
+			Vector2 newPos = -(new Vector2(screenSize.x*scrollDir.x, screenSize.y*scrollDir.y))+10*scrollSpeed*scrollDir;
 			//instantiate a new image
 			GameObject next = (GameObject) Instantiate(rectPrefab,transform.parent);
 			next.GetComponent<RectTransform>().localPosition = newPos;
@@ -46,7 +46,7 @@ public class Parallax : MonoBehaviour {
 		}
 		//The relative movement of the object
 		Vector2 relativeDir = new Vector2(scrollDir.x*screenSize.x, scrollDir.y*screenSize.y).normalized;
-		transform.Translate(relativeDir);
+		transform.Translate(relativeDir*scrollSpeed);
 
 	}
 }
