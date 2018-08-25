@@ -23,7 +23,6 @@ public class Parallax : MonoBehaviour {
 		//scroll dir: (x,y) st Max(x,y) == 1
 		float max = Mathf.Max(Mathf.Abs(scrollDir.x), Mathf.Abs(scrollDir.y));
 		scrollDir = scrollDir/max;
-		Debug.Log(scrollDir);
 		//Get the position of the object relative to the parent in pixel soace (0,0) is the middle of screen
 		Vector2 localPos = new Vector2(GetComponent<RectTransform>().localPosition.x, GetComponent<RectTransform>().localPosition.y);
 
@@ -32,7 +31,6 @@ public class Parallax : MonoBehaviour {
 		if (first&&Vector2.Dot(localPos,scrollDir)>=0) {
 			//the location of the newly instantiated image
 			Vector2 newPos = -(new Vector2(screenSize.x*scrollDir.x, screenSize.y*scrollDir.y));
-			Debug.Log(newPos);
 			//instantiate a new image
 			GameObject next = (GameObject) Instantiate(rectPrefab,transform.parent);
 			next.GetComponent<RectTransform>().localPosition = newPos;
