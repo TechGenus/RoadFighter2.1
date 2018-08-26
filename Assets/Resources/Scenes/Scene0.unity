@@ -277,7 +277,7 @@ Transform:
   - {fileID: 28024421}
   - {fileID: 857859380}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &312072265
 GameObject:
@@ -344,10 +344,10 @@ GameObject:
   m_Component:
   - component: {fileID: 834125165}
   - component: {fileID: 834125164}
-  - component: {fileID: 834125163}
   - component: {fileID: 834125162}
   - component: {fileID: 834125161}
   - component: {fileID: 834125160}
+  - component: {fileID: 834125163}
   m_Layer: 0
   m_Name: PlayerTwo
   m_TagString: Untagged
@@ -374,7 +374,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &834125161
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -429,7 +429,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: {x: 1, y: 1}
-  knockBackTime: 1
+  knockBackTime: 0.5
+  otherPlayer: {fileID: 2146543344}
+  horizontalAxisName: Horizontal2
+  verticalAxisName: Vertical2
+  playerAnimationStateName: playerTwoState
 --- !u!212 &834125164
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -476,12 +480,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 834125159}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.5, y: -3, z: -1}
   m_LocalScale: {x: 1, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &857859378
 GameObject:
@@ -792,7 +796,7 @@ Transform:
   - {fileID: 1406090626}
   - {fileID: 2069234821}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1625054628
 GameObject:
@@ -880,7 +884,7 @@ Transform:
   - {fileID: 1818433580}
   - {fileID: 1625054629}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2069234820
 GameObject:
@@ -1014,10 +1018,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2146543348}
   - component: {fileID: 2146543347}
-  - component: {fileID: 2146543346}
   - component: {fileID: 2146543345}
   - component: {fileID: 2146543349}
   - component: {fileID: 2146543350}
+  - component: {fileID: 2146543346}
   m_Layer: 0
   m_Name: PlayerOne
   m_TagString: Untagged
@@ -1054,7 +1058,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: {x: 1, y: 1}
-  knockBackTime: 1
+  knockBackTime: 0.5
+  otherPlayer: {fileID: 834125159}
+  horizontalAxisName: Horizontal
+  verticalAxisName: Vertical
+  playerAnimationStateName: playerOneState
 --- !u!212 &2146543347
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1101,12 +1109,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2146543344}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.5, y: -3, z: -1}
   m_LocalScale: {x: 1, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &2146543349
 BoxCollider2D:
@@ -1152,4 +1160,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
