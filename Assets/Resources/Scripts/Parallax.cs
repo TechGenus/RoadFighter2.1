@@ -13,9 +13,10 @@ public class Parallax : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rectPrefab = gameObject;
-		canvas = transform.parent.GetComponent<Canvas>();
+		canvas = transform.parent.transform.parent.GetComponent<Canvas>();
+		Debug.Log(transform.parent.transform.parent.name);
 		Screen.SetResolution(1920,1080,true);
-		screenSize = new Vector2(GetComponentInParent<RectTransform>().rect.width, GetComponentInParent<RectTransform>().rect.height);
+		screenSize = new Vector2(canvas.GetComponent<RectTransform>().rect.width, canvas.GetComponent<RectTransform>().rect.height);
 	}
 	
 	// Update is called once per frame
@@ -33,6 +34,7 @@ public class Parallax : MonoBehaviour {
 			Vector2 newPos = -(new Vector2(screenSize.x*scrollDir.x, screenSize.y*scrollDir.y))+10*scrollSpeed*scrollDir;
 			//instantiate a new image
 			GameObject next = (GameObject) Instantiate(rectPrefab,transform.parent);
+			next.transform.parent = transform.parent;
 			next.GetComponent<RectTransform>().localPosition = newPos;
 			next.transform.SetParent(this.transform.parent);
 			next.name = gameObject.name;
