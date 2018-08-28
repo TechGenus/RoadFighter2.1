@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MenuNavigation : MonoBehaviour {
-
+	public GameObject controlsPanel;
 	public void StartGame() {
-		Debug.Log("start game");
+		SceneManager.LoadScene("Scene0");
 	}
 	public void ShowControls() {
-		Debug.Log("Show Controls");
+		controlsPanel.SetActive(!controlsPanel.activeSelf);
 	}
 	public void LeaveGame() {
 		Debug.Log("leave game");
+		Application.Quit();
 	}
 }
