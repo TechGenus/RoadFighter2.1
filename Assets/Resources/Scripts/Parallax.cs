@@ -14,7 +14,6 @@ public class Parallax : MonoBehaviour {
 	void Start () {
 		rectPrefab = gameObject;
 		canvas = transform.parent.transform.parent.GetComponent<Canvas>();
-		Debug.Log(transform.parent.transform.parent.name);
 		Screen.SetResolution(1920,1080,true);
 		screenSize = new Vector2(canvas.GetComponent<RectTransform>().rect.width, canvas.GetComponent<RectTransform>().rect.height);
 	}
