@@ -323,7 +323,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 264094687}
-  - component: {fileID: 264094688}
+  - component: {fileID: 264094689}
   m_Layer: 0
   m_Name: Road
   m_TagString: Untagged
@@ -349,7 +349,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &264094688
+--- !u!114 &264094689
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -357,16 +357,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 264094686}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 168177d6ee375de4b95e1aeeabcf3d81, type: 3}
+  m_Script: {fileID: 11500000, guid: 2604858e04019e146b88ca272ec7c5d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  backgroundSize: 6.5
   parallaxSpeed: 0
-  maxParallaxSpeed: 20
-  parallaxIncrementSpeed: 2
-  separationDistance: 6.5
-  players:
-  - {fileID: 2146543344}
-  - {fileID: 834125159}
 --- !u!1 &312072265
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,7 +511,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5525fdbbda224ee49a063895f46dfc73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: 2, y: 2}
+  speed: {x: 2, y: 1000}
+  collisionSpeed: 0.25
+  maxSpeed: 20
   knockBackTime: 0.5
   otherPlayer: {fileID: 2146543344}
   horizontalAxisName: Horizontal2
@@ -822,7 +819,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 20}
+  m_Size: {x: 1, y: 50}
   m_EdgeRadius: 0
 --- !u!4 &1355226468
 Transform:
@@ -831,7 +828,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1355226466}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.7, y: 0, z: 10}
+  m_LocalPosition: {x: -2.7, y: 6, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1448762852}
@@ -1020,7 +1017,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1526425110}
-  - component: {fileID: 1526425111}
+  - component: {fileID: 1526425112}
   m_Layer: 0
   m_Name: BackgroundWater
   m_TagString: Untagged
@@ -1035,7 +1032,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1526425109}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 197262366}
@@ -1044,7 +1041,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1526425111
+--- !u!114 &1526425112
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -1052,16 +1049,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1526425109}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 168177d6ee375de4b95e1aeeabcf3d81, type: 3}
+  m_Script: {fileID: 11500000, guid: 2604858e04019e146b88ca272ec7c5d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxSpeed: 0
-  maxParallaxSpeed: 5
-  parallaxIncrementSpeed: 0.5
-  separationDistance: 13
-  players:
-  - {fileID: 2146543344}
-  - {fileID: 834125159}
+  backgroundSize: 13
+  parallaxSpeed: 0.5
 --- !u!1001 &1563275216
 Prefab:
   m_ObjectHideFlags: 0
@@ -1304,7 +1296,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 20}
+  m_Size: {x: 1, y: 50}
   m_EdgeRadius: 0
 --- !u!4 &2118466203
 Transform:
@@ -1313,7 +1305,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2118466201}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.7, y: 0, z: 10}
+  m_LocalPosition: {x: 2.7, y: 6, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1448762852}
@@ -1367,7 +1359,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5525fdbbda224ee49a063895f46dfc73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: 2, y: 2}
+  speed: {x: 2, y: 1000}
+  collisionSpeed: 0.25
+  maxSpeed: 20
   knockBackTime: 0.5
   otherPlayer: {fileID: 834125159}
   horizontalAxisName: Horizontal
