@@ -26,9 +26,18 @@ public class MenuNavigation : MonoBehaviour {
 		//Debug.Log("Player1: ("+joystickX+", "+joystickY+")");
 		joystickY = Input.GetAxis("Player2_Vertical");
 		joystickX = Input.GetAxis("Player2_Horizontal");
-		//Debug.Log("Player2: ("+joystickX+", "+joystickY+")");
+		//	Debug.Log("Player2: ("+joystickX+", "+joystickY+")");
 		if (Input.GetButtonDown("A")) {
 			Debug.Log("A");
+		}
+		if (Input.GetButtonDown("B")) {
+			Debug.Log("B");
+		}
+		if (Input.GetButtonDown("X")) {
+			Debug.Log("X");
+		}
+		if (Input.GetButtonDown("Y")) {
+			Debug.Log("Y");
 		}
 	}
 }
