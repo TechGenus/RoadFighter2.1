@@ -29,7 +29,7 @@ public class RoadParallax2 : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		float deltaY = camT.position.y - lastCameraY;
-		transform.position += Vector3.up * (deltaY * parallaxSpeed);
+		transform.position += new Vector3(0, deltaY * parallaxSpeed, 0);
 		lastCameraY = camT.position.y;
 
 		if (camT.position.y < layers[bottomIndex].position.y + viewZone) {
@@ -42,7 +42,8 @@ public class RoadParallax2 : MonoBehaviour {
 
 	private void ScrollUp() {
 		int lastDown = bottomIndex;
-		layers[bottomIndex].position = new Vector2(layers[bottomIndex].position.x, layers[topIndex].position.y + backgroundSize);
+		layers[bottomIndex].position = new Vector3(layers[bottomIndex].position.x, layers[topIndex].position.y + backgroundSize, layers[bottomIndex].position.z);
+
 		topIndex = bottomIndex;
 		bottomIndex--;
 		if (bottomIndex < 0) {
@@ -52,7 +53,8 @@ public class RoadParallax2 : MonoBehaviour {
 
 	private void ScrollDown() {
 		int lastUp = topIndex;
-		layers[topIndex].position = new Vector2(layers[topIndex].position.x, layers[bottomIndex].position.y - backgroundSize);
+		layers[topIndex].position = new Vector3(layers[topIndex].position.x, layers[bottomIndex].position.y - backgroundSize, layers[bottomIndex].position.z);
+
 		bottomIndex = topIndex;
 		topIndex++;
 		if (topIndex == layers.Length) {
