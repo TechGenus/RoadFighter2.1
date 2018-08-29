@@ -516,8 +516,8 @@ MonoBehaviour:
   maxSpeed: 20
   knockBackTime: 0.5
   otherPlayer: {fileID: 2146543344}
-  horizontalAxisName: Horizontal2
-  verticalAxisName: Vertical2
+  horizontalAxisName: Player2_Horizontal
+  verticalAxisName: Player2_Vertical
   playerAnimationStateName: playerTwoState
   vAxis: 0
 --- !u!212 &834125164
@@ -1536,8 +1536,8 @@ MonoBehaviour:
   maxSpeed: 20
   knockBackTime: 0.5
   otherPlayer: {fileID: 834125159}
-  horizontalAxisName: Horizontal
-  verticalAxisName: Vertical
+  horizontalAxisName: Player1_Horizontal
+  verticalAxisName: Player1_Vertical
   playerAnimationStateName: playerOneState
   vAxis: 0
 --- !u!212 &2146543347
