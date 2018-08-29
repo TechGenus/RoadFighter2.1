@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4913712445150748}
   - component: {fileID: 212286540816083880}
   - component: {fileID: 61863729207549548}
+  - component: {fileID: 114565062672576334}
   m_Layer: 0
   m_Name: Traffic_RedCar
   m_TagString: Untagged
@@ -66,6 +67,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.85, y: 1.78}
   m_EdgeRadius: 0
+--- !u!114 &114565062672576334
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1596079125176648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33b7b58fcf9121b4c865e5656374552e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
 --- !u!212 &212286540816083880
 SpriteRenderer:
   m_ObjectHideFlags: 1

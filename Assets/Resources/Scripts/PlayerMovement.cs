@@ -53,7 +53,9 @@ public class PlayerMovement : MonoBehaviour {
 
 	void TranslatePlayer() {
 		if (Time.time <= controlFreezeTime) {
-			float normalizedVelocityY = rb.velocity.y / Mathf.Abs(rb.velocity.y);
+			float currVelocity = rb.velocity.y;
+			float normalizedVelocityY = CalculateNormalizedVelocityY(currVelocity);
+			
 			if (anim.GetInteger(playerAnimationStateName) == 2) {
 				thisPlayerT.Translate(new Vector3(-deltaSpeed.x, 0, 0));
 				rb.velocity -= new Vector2(0, normalizedVelocityY * collisionSpeed);
@@ -72,6 +74,12 @@ public class PlayerMovement : MonoBehaviour {
 				anim.SetInteger(playerAnimationStateName, 0);
 			}
 		}
+	}
+
+	float CalculateNormalizedVelocityY(float currVelocity) {
+		if (currVelocity != 0) {
+			return currVelocity / Mathf.Abs(currVelocity);
+		} else return 0;
 	}
 
 	void OnCollisionEnter2D(Collision2D col) {
