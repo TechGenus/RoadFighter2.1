@@ -9,8 +9,9 @@ public class RestartGame : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetAxisRaw(axisName) == 1) {
+		if (Input.GetAxisRaw(axisName) == 1 || Input.GetKeyDown(KeyCode.R)) {
 			SceneManager.LoadScene(nameOfSceneToLoad);
+			Time.timeScale = 1;
 		}
 	}
 }
