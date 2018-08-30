@@ -5,14 +5,12 @@ using UnityEngine;
 public class TrafficSpawner : MonoBehaviour {
 	public GameObject[] trafficPrefabs;
 	public Transform[] spawnPositions;
-	public float respawnTimerCoolDown;
+	public float respawnCoolDownTime;
+	public float minRespawnCoolDownTime;
+	public float respawnCoolDownTimeDecrementValue;
+
 
 	private float respawnTimer;
-
-	// Use this for initialization
-	void Start () {
-
-	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -22,10 +20,14 @@ public class TrafficSpawner : MonoBehaviour {
 	}
 
 	void SpawnTraffic() {
-		int randomSpawnIndex = (int)Random.Range(0, spawnPositions.Length - 1);
-		int randomPrefabToSpawn = (int)Random.Range(0, trafficPrefabs.Length - 1);
+		int randomSpawnIndex = (int)Random.Range(0, spawnPositions.Length);
+		int randomPrefabToSpawn = (int)Random.Range(0, trafficPrefabs.Length);
 
-		Instantiate(trafficPrefabs[randomPrefabToSpawn], spawnPositions[randomSpawnIndex].position, Quaternion.identity);
-		respawnTimer = Time.time + respawnTimerCoolDown;
+		Instantiate(trafficPrefabs[randomPrefabToSpawn], spawnPositions[randomSpawnIndex].position, trafficPrefabs[randomPrefabToSpawn].transform.rotation);
+		respawnTimer = Time.time + respawnCoolDownTime;
+
+		if (respawnCoolDownTime > minRespawnCoolDownTime) {
+			respawnCoolDownTime -= respawnCoolDownTimeDecrementValue;
+		}
 	}
 }

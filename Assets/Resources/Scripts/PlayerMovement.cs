@@ -1,39 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour {
 	public Vector2 speed;
 	public float collisionSpeed;
 	public float maxSpeed;
 	public float knockBackTime = 1f;
-	public GameObject otherPlayer;
 	public string horizontalAxisName;
 	public string verticalAxisName;
 	public string playerAnimationStateName;
+	public Text playerSpeedText;
 	[HideInInspector] public float vAxis;
 
 	private Vector2 deltaSpeed;
 	private Animator anim;
-	private Camera cam;
 	private float controlFreezeTime;
-	private float maxY;
 	private float hSpeed;
 	private float vSpeed;
 	private Transform thisPlayerT;
-	private Transform otherPlayerT;
 	private Rigidbody2D rb;
-	private PlayerMovement otherPlayerMovement;
 
 	// Use this for initialization
 	void Start() {
-		cam = Camera.main;
-		maxY = cam.orthographicSize;
-		Debug.Log("maxY = " + maxY);
-
 		thisPlayerT = GetComponent<Transform>();
-		otherPlayerT = otherPlayer.GetComponent<Transform>();
-		otherPlayerMovement = otherPlayer.GetComponent<PlayerMovement>();
 
 		rb = GetComponent<Rigidbody2D>();
 
@@ -41,7 +32,7 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update() {
+	void FixedUpdate() {
 		deltaSpeed = speed * Time.deltaTime;
 		hSpeed = Input.GetAxisRaw(horizontalAxisName) * deltaSpeed.x;
 		vAxis = Input.GetAxis(verticalAxisName);
@@ -52,9 +43,9 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	void TranslatePlayer() {
+		float currVelocity = rb.velocity.y;
+		float normalizedVelocityY = CalculateNormalizedVelocityY(currVelocity);
 		if (Time.time <= controlFreezeTime) {
-			float currVelocity = rb.velocity.y;
-			float normalizedVelocityY = CalculateNormalizedVelocityY(currVelocity);
 			
 			if (anim.GetInteger(playerAnimationStateName) == 2) {
 				thisPlayerT.Translate(new Vector3(-deltaSpeed.x, 0, 0));
@@ -66,7 +57,15 @@ public class PlayerMovement : MonoBehaviour {
 		} else {
 			//thisPlayerT.Translate(new Vector3(hSpeed, vSpeed, 0));
 			thisPlayerT.Translate(new Vector3(hSpeed, 0, 0));
-			rb.velocity = new Vector2(0, vSpeed);
+
+			if (currVelocity < maxSpeed && currVelocity > -maxSpeed) {
+				rb.velocity += new Vector2(0, vSpeed - normalizedVelocityY * 5 * Time.deltaTime);
+			} else {
+				rb.velocity -= new Vector2(0, normalizedVelocityY * 5 * Time.deltaTime);
+			}
+
+			float displaySpeed = Mathf.Round(rb.velocity.y * 10);
+			playerSpeedText.text = displaySpeed.ToString();
 
 			if (rb.velocity.y != 0 || hSpeed != 0) {
 				anim.SetInteger(playerAnimationStateName, 1);

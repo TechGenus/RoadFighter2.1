@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraBetweenPlayers : MonoBehaviour {
 	public Transform player1T;
 	public Transform player2T;
+	public Text winText;
+	public Image winImage;
+
 
 	private Transform t;
 	private Vector3 player1StartingPos;
@@ -28,9 +32,17 @@ public class CameraBetweenPlayers : MonoBehaviour {
 
 	void CheckWinOrLoseConditions() {
 		if (player1T.position.y > t.position.y + cam.orthographicSize) {
-			Debug.Log("PlayerOne win");
-		} else if (player1T.position.y < t.position.y - cam.orthographicSize) {
-			Debug.Log("PlayerTwo win");
+			ShowWinningScreen("The winner is Blue!");
+			Time.timeScale = 0f;
+		} else if (player2T.position.y > t.position.y + cam.orthographicSize) {
+			ShowWinningScreen("The winner is Red!");
+			Time.timeScale = 0f;
 		}
+	}
+
+	void ShowWinningScreen(string playerWinText) {
+		winText.gameObject.SetActive(true);
+		winText.text = playerWinText;
+		winImage.gameObject.SetActive(true);
 	}
 }
