@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class TrafficParallax : MonoBehaviour {
 	public float speed;
-
-	private Transform t;
+	
+	private Rigidbody2D rb;
 
 	// Use this for initialization
 	void Start () {
-		t = GetComponent<Transform>();
+		rb = GetComponent<Rigidbody2D>();
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		t.Translate(new Vector3(0, speed, 0) * Time.deltaTime);
+	void FixedUpdate () {
+		rb.velocity = new Vector3(0, speed, 0);
 	}
 
 	private void OnCollisionEnter2D(Collision2D collision) {
